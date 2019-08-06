@@ -52,11 +52,8 @@ class HeaderWrap extends Component {
                                             </span>
                                         }
                                     >
-                                        if (item.get("innerdata")) {
-                                            item.get("innerdata").map((innerItem)=>{
-                                                <Menu.Item key={innerItem.get('id')}>{innerItem.get('title')}</Menu.Item>
-                                            })
-                                
+                                        {
+                                            this.getNavInnerItem(item)
                                         }
                                        
                                     </SubMenu>
@@ -75,6 +72,18 @@ class HeaderWrap extends Component {
         this.props.getNavList()
     }
 
+    getNavInnerItem(item){
+        if(item.get('innerdata')){
+            let innerdata = item.get('innerdata');
+            console.log(innerdata.toJS(innerdata))
+            innerdata.map((items)=>{
+                return(
+                   <Menu.Item key={items.get('id')}>{items.get('title')}</Menu.Item>
+                )
+           })
+        }
+        
+    }
 }
 
 
