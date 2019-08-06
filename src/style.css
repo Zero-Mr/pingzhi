@@ -1,0 +1,54 @@
+.floatRight{
+    float: right;
+}
+.floatLeft{
+    float: left;
+}
+.list-inline li{
+    display: inline-block;
+}
+.imgres{
+    max-width: 100%;
+    display: inline-block;
+}
+
+.visible-xs{
+    display: none;
+}
+
+.ant-layout-header{
+    position: relative;
+    padding: 0;
+}
+.menu-btn{
+    color: #000;
+    position: absolute;
+    left: 5px;
+    bottom: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ant-layout-header{
+    height: auto;
+    background-color: #fff;
+}
+
+.ant-menu-submenu-popup{
+    left: 0 !important;
+    width: 100% !important;
+    top: 114px !important;
+}
+
+@media screen and (max-width:767px){
+    .logolink{
+        text-align: center;
+        display: block;
+    }
+    .visible-xs{
+        display: block;
+    }
+    .hidden-xs{
+        display: none;
+    }
+}

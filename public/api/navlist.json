@@ -1,0 +1,29 @@
+{
+    "sucess":true,
+    "data":[
+        {"title":"首页","link":"/","component":"Index","id":0},
+        {"title":"品牌实力","link":"/Brand-strength","component":"Brand_strength","id":1},
+        {"title":"装修案例","link":"/Decorate-a-case","component":"Decorate_a_case","id":2,"innerdata":[
+            {"title":"现代简约","link":"Classification-of-cases","id":0},
+            {"title":"中式","link":"Classification-of-cases","id":1},
+            {"title":"欧式","link":"Classification-of-cases","id":3},
+            {"title":"北欧","link":"Classification-of-cases","id":4},
+            {"title":"田园","link":"Classification-of-cases","id":5},
+            {"title":"混搭","link":"Classification-of-cases","id":6},
+            {"title":"新古典","link":"Classification-of-cases","id":7},
+            {"title":"其他","link":"Classification-of-cases","id":8}
+            ]
+        },
+        {"title":"装修知识","link":"/Decorate-a-knowledge","component":"Decorate_a_knowledge","id":3,"innerdata":[
+            {"title":"装修问答","link":"Decorate-of-cases","id":0},
+            {"title":"装修流程","link":"Decorate-of-cases","id":1},
+            {"title":"常见疑问","link":"Decorate-of-cases","id":2},
+            {"title":"装修前","link":"Decorate-of-cases","id":3},
+            {"title":"装修中","link":"Decorate-of-cases","id":4},
+            {"title":"装修后","link":"Decorate-of-cases","id":5}
+            ]
+        },
+        {"title":"联系我们","link":"/Contact-us","component":"Contact_us","id":4},
+        {"title":"免费服务","link":"/Free-service","component":"Free_service","id":5}
+    ]
+}
