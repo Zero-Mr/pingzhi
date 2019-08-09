@@ -1,0 +1,8 @@
+{
+    "data":[
+        {"navlist":"/api/navlist.json"},
+        {"footerlist":"/api/footerlist.json"},
+        {"carousel":"http://test.pz.com/api/banner/getBannerList"},
+        {"jscase":"http://test.pz.com/api/house_design/getDesignList"}
+    ]
+}

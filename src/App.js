@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './style.css'
 
-
 import { Layout } from 'antd';
 import HeaderWrap from './common/header'
 import ContentWrap from './page/content'

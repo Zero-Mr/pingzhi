@@ -24,9 +24,10 @@
     color: #000;
     position: absolute;
     left: 5px;
-    bottom: 8px;
+    top: 35px;
     font-size: 20px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .ant-layout-header{
@@ -40,6 +41,56 @@
     top: 114px !important;
 }
 
+.dis-inline{
+    display: inline-block;
+}
+
+.ant-menu.ant-menu-sub.ant-menu-vertical{
+    text-align: center;
+}
+.ant-menu.ant-menu-sub.ant-menu-vertical li:last-of-type{
+    margin-bottom: 8px;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color:transparent;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected.active{
+    background-color: #e6f7ff;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected a{
+    color: rgba(0, 0, 0, 0.65);
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected.active a{
+    color: #1890ff;
+}
+.footerlist{
+    text-align: center;
+}
+.footerlist li{
+    margin-top: 10px;
+}
+.footerlist li a{
+    color: rgba(0, 0, 0, 0.65)
+}
+.footeritem {
+    margin-right: 30px;
+}
+
+.footer-wxcode img{
+    max-height: 100px;
+    max-width: 100px;
+}
+.telul{
+    text-align: center;
+}
+
+
+@media screen and (max-width:991px){
+    .footeritem:nth-of-type(3){
+        margin-bottom: 73px;
+    }
+}
+
 @media screen and (max-width:767px){
     .logolink{
         text-align: center;
@@ -50,5 +101,40 @@
     }
     .hidden-xs{
         display: none;
+    }
+    .ant-menu-submenu.ant-menu-submenu-popup.ant-menu-light.hasinner.ant-menu-submenu-placement-rightTop{
+        display: none;
+    }
+    .hasinner div i.ant-menu-submenu-arrow{
+        display: none !important;
+    }
+    .nav-ul li{
+        display: block;
+    }
+    .nav-ul{
+        overflow: hidden;
+        height: 0;
+    }
+    .isshow{
+        height: auto;
+        position: absolute;
+        z-index: 2;
+        border-bottom: 1px solid #e8e8e8;
+    }
+}
+@media screen and (max-width:575px){
+    .footeritem{
+        margin-bottom: 40px;
+    }
+    .ant-layout-footer{
+        padding: 24px 14px;
+    }
+    .telfloatr{
+        float: right;
+        margin-right: 0;
+    }
+    .footer-wxcode{
+        margin-bottom: 0;
+        margin-right: 0;
     }
 }

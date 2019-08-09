@@ -24,7 +24,23 @@ margin:0 auto;
         transform:rotate(-90deg)
     }
 }
+i.ant-menu-submenu-arrow{
+    display:none;
+}
+.hasinner{
+    i.ant-menu-submenu-arrow{
+    display:inline-block;
+}
+}
 .ant-menu{
     border-right:none;
 }
+
+a{
+   color: rgba(0, 0, 0, 0.65);
+}
+a.active{
+    color:#1890ff;
+}
+
 `
