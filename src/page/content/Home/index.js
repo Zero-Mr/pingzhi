@@ -3,6 +3,7 @@ import CarouselWrap from './Carousel'
 import SpecialLabel from './Special_label'
 import Ticker from './ticker'
 import Jdcase from './jdcase'
+import DecorationProcess from './Decoration_process';
 
 class Home extends PureComponent {
     render(){
@@ -12,6 +13,7 @@ class Home extends PureComponent {
                <SpecialLabel />
                <Ticker />
                <Jdcase />
+               <DecorationProcess />
            </div>
         )
     }

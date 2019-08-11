@@ -8,32 +8,31 @@ import { actionsCreators } from './store'
 class Jdcase extends PureComponent {
 
     render() {
+        const {
+            navlistcopy,
+            jslist,
+        } = this.props;
+
+        
 
         return (
             <JdcaseWrap className="JdcaseWrap">
                 <h1 className="jdtitle">经典案例</h1>
                 <div className="jdinnerWrap">
                     <ul>
-
+                        {
+                            navlistcopy && navlistcopy.map((item, index) => (
+                                <li key={index}>{ item.get('title') }</li>
+                            ))
+                        }
                     </ul>
                     <Row className="jdcaseWrap">
-
                         {
-                            this.props.jslist.map((item,index) => {
-                                let className_jd ;
-                                let telindexclass = index ==1 ? 8 : 7;
-                                let towindexclass = index == 4 ? 24 : 11
-                                if(index==0){
-                                    className_jd='jdcaseitem jditem-'+index
-                                }else if(index==1){
-                                    className_jd='jdcaseitem jditem-'+index
-                                }else if(index==2){
-                                    className_jd='jdcaseitem jditem-'+index
-                                }else if(index==3){
-                                    className_jd='jdcaseitem jditem-'+index
-                                }else if(index==4){
-                                    className_jd='jdcaseitem jditem-'+index
-                                }
+                            jslist.map((item,index) => {
+                                let telindexclass = index == 1 ? 8 : 7;
+                                let towindexclass = index == 4 ? 24 : 11;
+                                let className_jd = `jcdcaseitem jditem-${index}`;
+
                                 return (
                                     <Col key={item.get('id')} xs={towindexclass } sm={towindexclass} md={telindexclass} lg={telindexclass} xl={telindexclass} className={
                                         className_jd
