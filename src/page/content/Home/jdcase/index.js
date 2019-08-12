@@ -19,10 +19,14 @@ class Jdcase extends PureComponent {
             <JdcaseWrap className="JdcaseWrap">
                 <h1 className="jdtitle">经典案例</h1>
                 <div className="jdinnerWrap">
-                    <ul>
+                    <ul className="list-inline jdTopnav">
                         {
                             navlistcopy && navlistcopy.map((item, index) => (
-                                <li key={index}>{ item.get('title') }</li>
+                                <li key={index}>
+                                    <Link to={"/"+item.get('link')}>
+                                          { item.get('title') }
+                                    </Link>
+                                </li>
                             ))
                         }
                     </ul>
@@ -31,8 +35,18 @@ class Jdcase extends PureComponent {
                             jslist.map((item,index) => {
                                 let telindexclass = index == 1 ? 8 : 7;
                                 let towindexclass = index == 4 ? 24 : 11;
-                                let className_jd = `jcdcaseitem jditem-${index}`;
-
+                                let className_jd;
+                                if(index == 0){
+                                    className_jd = 'jdcaseitem jditem-'+index
+                                }else if(index == 1){
+                                    className_jd = 'jdcaseitem jditem-'+index
+                                }else if(index == 2){
+                                    className_jd = 'jdcaseitem jditem-'+index
+                                }else if(index == 3){
+                                    className_jd = 'jdcaseitem jditem-'+index
+                                }else if(index == 4){
+                                    className_jd = 'jdcaseitem jditem-'+index
+                                }
                                 return (
                                     <Col key={item.get('id')} xs={towindexclass } sm={towindexclass} md={telindexclass} lg={telindexclass} xl={telindexclass} className={
                                         className_jd
@@ -50,7 +64,6 @@ class Jdcase extends PureComponent {
                         }
                     </Row>
                 </div>
-
             </JdcaseWrap>
         )
     }

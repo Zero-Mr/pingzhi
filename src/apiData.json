@@ -3,6 +3,9 @@
         {"navlist":"/api/navlist.json"},
         {"footerlist":"/api/footerlist.json"},
         {"carousel":"http://test.pz.com/api/banner/getBannerList"},
-        {"jscase":"http://test.pz.com/api/house_design/getDesignList"}
+        {"jscase":"http://test.pz.com/api/house_design/getDesignList"},
+        {"knowledge":"http://test.pz.com/api/cms_article/getCmsList"},
+        {"ticker":"http://test.pz.com/api/quote/getQuote"},
+        {"alltelnum":"http://test.pz.com/api/quote/getQuoteCount"}
     ]
 }

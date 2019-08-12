@@ -9,6 +9,9 @@ margin-top:50px;
     padding-top:20px;
     padding-bottom:30px;
     margin-right:20px;
+    @media (max-width:767px){
+        margin-bottom:20px;
+    }
     a{
         p{
             color:#000;

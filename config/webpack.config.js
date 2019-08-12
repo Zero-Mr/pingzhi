@@ -390,6 +390,46 @@ module.exports = function(webpackEnv) {
                 sourceMaps: false,
               },
             },
+            {
+              test: /\.css$/,
+              loader: 'style-loader!css-loader'
+         },  
+         {
+              test: /\.less$/,
+              exclude:[/node_modules/], //非antd目录开启css modules 
+              use:[
+                {
+                  loader: 'style-loader'  
+                },
+                {
+                  loader: 'css-loader',
+                  options: {
+                    importLoaders: 2,
+                    modules: true, 
+                    sourceMap: true,
+                    localIdentName: '[local]___[hash:base64:5]'
+                  } 
+                },
+                {
+                  loader: 'less-loader'
+                }
+              ]
+          },
+          {
+              test: /\.less$/,
+              include:[/node_modules/], //antd目录
+              use:[
+                {
+                  loader: 'style-loader'  
+                },
+                {
+                  loader: 'css-loader'  
+                },
+                {
+                  loader: 'less-loader'  
+                }
+              ]
+          },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
             // "style" loader turns CSS into JS modules that inject <style> tags.

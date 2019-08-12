@@ -17,8 +17,8 @@ class FooterWrap extends PureComponent {
         const { footerList ,footertel} = this.props;
         return (
             <Footer className="footerbox">
-                <Row>
-                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <Row type="flex" justify="center">
+                    <Col className="footerboxwrap" xs={24} sm={24} md={20} lg={20} xl={20}>
                         {
                             footerList.map((item,index) => {
                                 

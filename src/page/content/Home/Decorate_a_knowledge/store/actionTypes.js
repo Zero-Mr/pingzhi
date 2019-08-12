@@ -1,0 +1,1 @@
+export const KNOW_START_GETDATA = 'INDEXGET-KnowledgeWrap-inner'

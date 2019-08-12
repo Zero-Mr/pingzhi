@@ -11,6 +11,17 @@ padding-top:50px;
 .jdinnerWrap{
     width:100%;
     overflow:hidden;
+    .jdTopnav{
+        width:100%;
+        text-align:right;
+        padding-right: 57px;
+        li{
+            margin-left:15px;
+            a{
+                color: rgba(0,0,0,0.65);
+            }
+        }
+    }
     .jdcaseWrap{
         position: relative;
         overflow:hidden;

@@ -3,6 +3,7 @@ import {TickerWrap} from './style'
 import { Cascader , InputNumber , Select ,Input ,Button } from 'antd';
 import {Row,Col} from 'antd'
 import axios from 'axios'
+import apiList from '@src/apiData.json'
 
 const { Option } = Select;
 
@@ -41,19 +42,41 @@ class Ticker extends PureComponent {
       tel:"",
       cityselect:['广东省', '深圳市']
     }
+    this.addDadtaBtn = this.addDadtaBtn.bind(this);
+    this.cityonChange = this.cityonChange.bind(this);
+    this.changeCityText = this.changeCityText.bind(this);
+    this.inputonChange = this.inputonChange.bind(this);
+    this.changemjtext = this.changemjtext.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangetwo = this.handleChangetwo.bind(this);
+    this.telchange = this.telchange.bind(this);
+    this.changetelText = this.changetelText.bind(this);
   }
 
     render() {
+        
+        let {
+          mjText,
+          telText,
+          cityText,
+          addnum,
+          cityselect,
+          selectOne,
+          selectTwo,
+          allb,
+          banb
+        } = this.state;
+
         let errortext;
-        if(this.state.mjText){
+        if( mjText ){
             errortext=<span className="error-text">请输入房屋面积</span>
         }  
         let telerror;
-        if(this.state.telText){
+        if( telText ){
           telerror=<span className="error-text">请输入正确的手机号码</span>
         }
         let cityerror;
-        if(this.state.cityText){
+        if( cityText ){
           cityerror=<span className="error-text">请选择正确的地址</span>
         }
 
@@ -61,7 +84,7 @@ class Ticker extends PureComponent {
             <TickerWrap>
                 <div className="tickercontiarn">
                     <h1>装修报价器</h1>
-                    <p>已有 <span>{this.state.addnum}</span> 名业主申请此服务</p>
+                    <p>已有 <span>{ addnum }</span> 名业主申请此服务</p>
                     <p>按实测面积收费！拒绝为公摊面积买单</p>
                     <div className="tockeritem floatLeft">
                         <div className="tockerinneritem">
@@ -69,28 +92,28 @@ class Ticker extends PureComponent {
                                 <Col className="item" xs={24} sm={24} md={24} lg={24} xl={24}>
                                     <label>所在城市：</label>
                                     <Cascader
-                                            defaultValue={this.state.cityselect}
+                                            defaultValue={ cityselect }
                                             options={options}
-                                            onChange={this.cityonChange.bind(this)}
-                                            className={ this.state.cityText ? 'error-border' : '' }
-                                            onFocus={ this.changeCityText.bind(this) }
+                                            onChange={this.cityonChange}
+                                            className={ cityText ? 'error-border' : '' }
+                                            onFocus={ this.changeCityText }
                                         />
                                      {cityerror}   
                                 </Col>
                                 <Col className="item" xs={24} sm={24} md={24} lg={24} xl={24}>
                                   <label className="label-mar">房屋面积: </label>
                                   <InputNumber 
-                                    className={ this.state.mjText ? 'error-border' : '' } 
-                                    size="large" min={1}  
-                                    onChange={this.inputonChange.bind(this)}
-                                    onFocus={this.changemjtext.bind(this)} />
+                                    className={ mjText ? 'error-border' : '' } 
+                                    size="large" min={ 1 }  
+                                    onChange={ this.inputonChange }
+                                    onFocus={ this.changemjtext } />
                                   <span>㎡</span>
                                   {errortext}
                                   
                                 </Col>
                                 <Col className="item" xs={24} sm={24} md={24} lg={24} xl={24}>
                                     <label>户型结构：</label>
-                                    <Select defaultValue={this.state.selectOne} style={{ width: 150 }} onChange={this.handleChange.bind(this)}>
+                                    <Select defaultValue={ selectOne } style={{ width: 150 }} onChange={ this.handleChange }>
                                         <Option value="平层">平层</Option>
                                         <Option value="复式">复式</Option>
                                         <Option value="别墅">
@@ -100,7 +123,7 @@ class Ticker extends PureComponent {
                                 </Col>
                                 <Col className="item" xs={24} sm={24} md={24} lg={24} xl={24}>
                                     <label>装修档次：</label>
-                                    <Select defaultValue={this.state.selectTwo} style={{ width: 150 }} onChange={this.handleChangetwo.bind(this)}>
+                                    <Select defaultValue={ selectTwo } style={{ width: 150 }} onChange={ this.handleChangetwo }>
                                         <Option value="简装">简装</Option>
                                         <Option value="精装">精装</Option>
                                         <Option value="豪装">
@@ -111,9 +134,9 @@ class Ticker extends PureComponent {
                                 <Col className="item" xs={24} sm={24} md={24} lg={24} xl={24}>
                                   <label>您的电话：</label>
                                   <Input placeholder="您的电话" 
-                                         className={ this.state.telText ? 'error-border telinput' : 'telinput'}
-                                         onChange={this.telchange.bind(this)}
-                                         onFocus={this.changetelText.bind(this)} />
+                                         className={ telText ? 'error-border telinput' : 'telinput'}
+                                         onChange={ this.telchange }
+                                         onFocus={ this.changetelText } />
                                   {telerror}
                                 </Col>
                             </Row>
@@ -123,16 +146,24 @@ class Ticker extends PureComponent {
                     <div className="tockeritem floatRight">
                          <h3>您家的装修预算</h3>
                          <div className="resultbox">
-                            <p>全包：<span>{this.state.allb} </span>  元 </p>
-                            <p>半包：<span>{this.state.banb} </span>  元 </p>
+                            <p>全包：<span>{ allb } </span>  元 </p>
+                            <p>半包：<span>{ banb } </span>  元 </p>
                          </div>
                     </div>
                     <div className="floatLeft addticker">
-                         <Button type="primary" onClick={this.addDadtaBtn.bind(this)}>立即获取报价</Button>
+                         <Button type="primary" onClick={this.addDadtaBtn}>立即获取报价</Button>
                     </div>
                 </div>
             </TickerWrap>
         )
+    }
+    componentDidMount(){
+      let thiss=this;
+      axios.get(apiList.data[6].alltelnum).then((res)=>{
+        thiss.setState({
+          addnum:res.data
+        })
+      })
     }
 
     changeCityText(){
@@ -214,13 +245,21 @@ class Ticker extends PureComponent {
         selectOne,
         selectTwo,
         cityselect
-      }
+      } 
 
-      axios.post('http://test.pz.com/api/quote/getQuote', {
+      
+      let thiss=this;
+
+      axios.post(apiList.data[5].ticker, {
         data
       })
-      .then(function (response) {
-        console.log(response);
+      .then(function (res) {
+        let addnumnew = thiss.state.addnum+1;
+        thiss.setState({
+          allb:res.data.data.price,
+          banb:res.data.data.halt_price,
+          addnum:addnumnew
+        })
       })
     }
 
