@@ -6,6 +6,9 @@
         {"jscase":"http://test.pz.com/api/house_design/getDesignList"},
         {"knowledge":"http://test.pz.com/api/cms_article/getCmsList"},
         {"ticker":"http://test.pz.com/api/quote/getQuote"},
-        {"alltelnum":"http://test.pz.com/api/quote/getQuoteCount"}
+        {"alltelnum":"http://test.pz.com/api/quote/getQuoteCount"},
+        {"adduserdata":"http://test.pz.com/api/quote/setService"},
+        {"splice_hover":"/api/splice_hover.json"},
+        {"characteristiclist":"http://test.pz.com/api/item/getItemList"}
     ]
 }

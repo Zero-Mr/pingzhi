@@ -14,7 +14,6 @@ export const knowledgeCreators = () => (dispatch) => {
             limit:6
         }
     }).then((res)=>{
-        console.log(res.data)
         let data = res.data;
         dispatch(knowledgeAction(data))
     })

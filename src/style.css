@@ -4,6 +4,9 @@
 .floatLeft{
     float: left;
 }
+.text-center{
+    text-align: center;
+}
 .list-inline li{
     display: inline-block;
 }

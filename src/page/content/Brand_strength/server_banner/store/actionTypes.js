@@ -1,0 +1,5 @@
+export const BRAND_SETUSETVAL = 'BRAND-usernameval'
+export const BRAND_TELINPUTSET = 'BRAND-telinputset'
+export const BRAND_HOMESETVAL = 'BRAND-homesetval'
+export const BRAND_resultdata = 'BRAND-resultdata'
+export const BRAND_GETALLTELS = 'BRAND_GETALLTELS'

@@ -4,6 +4,8 @@ import { Cascader , InputNumber , Select ,Input ,Button } from 'antd';
 import {Row,Col} from 'antd'
 import axios from 'axios'
 import apiList from '@src/apiData.json'
+import {actionsCreators} from './store'
+import { connect } from 'react-redux';
 
 const { Option } = Select;
 
@@ -33,7 +35,6 @@ class Ticker extends PureComponent {
       mjText:false,
       telText:false,
       cityText:false,
-      addnum:9047,
       allb:"?",
       banb:"?",
       areaValue:'',
@@ -59,7 +60,6 @@ class Ticker extends PureComponent {
           mjText,
           telText,
           cityText,
-          addnum,
           cityselect,
           selectOne,
           selectTwo,
@@ -67,6 +67,7 @@ class Ticker extends PureComponent {
           banb
         } = this.state;
 
+        let { telNumber } =this.props;
         let errortext;
         if( mjText ){
             errortext=<span className="error-text">请输入房屋面积</span>
@@ -84,7 +85,7 @@ class Ticker extends PureComponent {
             <TickerWrap>
                 <div className="tickercontiarn">
                     <h1>装修报价器</h1>
-                    <p>已有 <span>{ addnum }</span> 名业主申请此服务</p>
+                    <p>已有 <span>{ telNumber }</span> 名业主申请此服务</p>
                     <p>按实测面积收费！拒绝为公摊面积买单</p>
                     <div className="tockeritem floatLeft">
                         <div className="tockerinneritem">
@@ -158,12 +159,7 @@ class Ticker extends PureComponent {
         )
     }
     componentDidMount(){
-      let thiss=this;
-      axios.get(apiList.data[6].alltelnum).then((res)=>{
-        thiss.setState({
-          addnum:res.data
-        })
-      })
+      this.props.getalltelnum()
     }
 
     changeCityText(){
@@ -213,7 +209,6 @@ class Ticker extends PureComponent {
     }
     addDadtaBtn(){
       let { areaValue, tel, selectOne , selectTwo ,cityselect } = this.state;
-     
       if(areaValue==="" || areaValue===null){
         this.setState({
           mjText:true
@@ -254,15 +249,33 @@ class Ticker extends PureComponent {
         data
       })
       .then(function (res) {
-        let addnumnew = thiss.state.addnum+1;
         thiss.setState({
           allb:res.data.data.price,
           banb:res.data.data.halt_price,
-          addnum:addnumnew
         })
+        thiss.props.successteladd()
       })
     }
 
 }
 
-export default Ticker
+
+const mapState = (state) => {
+  return {
+      telNumber: state.getIn(['Ticker_reducre', 'alltel']),
+  }
+}
+
+const mapDispathToProps = (dispatch) => {
+  return {
+      getalltelnum(){
+          dispatch(actionsCreators.getalltelnumCreators())
+      },
+      successteladd(){
+        dispatch(actionsCreators.successteladdCreators())
+      }
+
+  }
+}
+
+export default connect(mapState, mapDispathToProps)(Ticker)
