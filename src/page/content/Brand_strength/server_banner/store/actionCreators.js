@@ -25,6 +25,10 @@ const getallnumAction = (num) => ({
     num
 })
 
+const setfreebtntextAction = () => ({
+    type:actionTypes.BRAND_SETBTNTEXT
+})
+
 export const UserinputBlurCreators = (value) => (dispatch) => {
     dispatch(UserinputBlurAction(value))
 }
@@ -42,4 +46,8 @@ export const resultuserdataCreators =() => (dispatch) => {
 
 export const getallnumCreators = (num) =>(dispatch) => {
     dispatch(getallnumAction(num))
+}
+
+export const setfreebtntextCreators =() => (dispatch) => {
+    dispatch(setfreebtntextAction())
 }

@@ -9,10 +9,13 @@ import apiList from '@src/apiData.json'
 class Freebtn extends PureComponent {
     
     render() {
-        const { clickaddbtn ,username,telNumber,homeaddress} = this.props;
+        const { clickaddbtn ,username,telNumber,homeaddress,freebtntext} = this.props;
         return (
-            <Button type="primary free-btn" onClick={ ()=> clickaddbtn(username,telNumber,homeaddress) }>免费预约</Button>
+            <Button type="primary free-btn" onClick={ ()=> clickaddbtn(username,telNumber,homeaddress) }>{freebtntext}</Button>
         )
+    }
+    componentDidMount(){
+        this.props.setfreebtntext()
     }
 
 }
@@ -22,6 +25,7 @@ const mapState = (state) => {
         username: state.getIn(['Brand_strength', 'uservalue']),
         telNumber: state.getIn(['Brand_strength', 'telvalue']),
         homeaddress: state.getIn(['Brand_strength', 'homevalue']),
+        freebtntext: state.getIn(['Brand_strength', 'freebtn']),
     }
 }
 
@@ -52,6 +56,9 @@ const mapDispathToProps = (dispatch) => {
                     }
                 })
             }
+        },
+        setfreebtntext(){
+            dispatch(actionsCreators.setfreebtntextCreators())
         }
     }
 }

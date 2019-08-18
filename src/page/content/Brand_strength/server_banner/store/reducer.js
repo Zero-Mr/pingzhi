@@ -5,7 +5,8 @@ const defaultState = fromJS({
     uservalue:"",
     telvalue:"",
     homevalue:"",
-    alltel:""
+    alltel:"",
+    freebtn:"免费预约"
 })
 
 export default (state = defaultState , action) => {
@@ -25,7 +26,9 @@ export default (state = defaultState , action) => {
                 alltel:state.get('alltel')+1
             }) 
         case actionTypes.BRAND_GETALLTELS:
-            return state.set('alltel',fromJS(action.num))          
+            return state.set('alltel',fromJS(action.num))    
+        case actionTypes.BRAND_SETBTNTEXT:
+            return state.set('freebtn','免费预约')          
         default:
             return state
     }   

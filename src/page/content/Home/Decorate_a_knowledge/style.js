@@ -5,6 +5,7 @@ margin-top:60px;
 margin-bottom:60px;
 padding-bottom:60px;
 border-bottom:1px solid #ccc;
+background-color:#fff;
 h1{
     font-size:30px;
 }
