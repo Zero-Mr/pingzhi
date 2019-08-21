@@ -13,7 +13,6 @@ const successteladdAction = () =>({
 
 export const getalltelnumCreators = (value) => (dispatch) => {
       axios.get(apiList.data[6].alltelnum).then((res)=>{
-        console.log(res.data)
         value=res.data;
         dispatch(getalltelAction(value))
       })

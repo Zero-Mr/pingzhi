@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { actionsCreators } from './store'
+import { CaseactionsCreators } from '../../page/content/case/selectcase/store'
 import logo from '../../statics/logo.png'
 
 import {
@@ -10,6 +11,8 @@ import {
     NavWrap
 } from './style'
 import { Layout, Row, Col, Input, Icon, Menu } from 'antd';
+import axios from 'axios'
+import apiList from '@src/apiData.json'
 const { Search } = Input;
 const { Header } = Layout;
 
@@ -19,7 +22,7 @@ const { SubMenu } = Menu;
 
 class HeaderWrap extends Component {
     render() {
-        const { navlist, navshow, setNavShow, setNavClass, navInnerClick } = this.props;
+        const { navlist, navshow, setNavShow, setNavClass, navInnerClick,caselist } = this.props;
         return (
             <Header>
                 <Icon type="menu" onClick={() => setNavShow(navshow)} className="menu-btn visible-xs" />
@@ -47,8 +50,8 @@ class HeaderWrap extends Component {
                                         content = item.get("innerdata").map((innerItem,innerindex) => (
                                             <Menu.Item className={innerItem.get('status') ? 'dis-inline active' : 'dis-inline'} key={innerItem.get('id')}>
                                                 <Link
-                                                    to={innerItem.get('link')}
-                                                    onClick={() => navInnerClick(navlist, index,innerindex)}
+                                                    to={'/Decorate-a-case/'+innerindex}
+                                                    onClick={() => navInnerClick(navlist, index,innerindex,innerItem.get('title'),caselist)}
                                                 >
                                                     {innerItem.get('title')}
                                                 </Link>
@@ -81,8 +84,6 @@ class HeaderWrap extends Component {
                                     )
                                 })
                             }
-
-
                         </Menu>
                     </NavWrap>
                 </ConstHeaderNav>
@@ -100,7 +101,8 @@ class HeaderWrap extends Component {
 const mapStateToProps = (state) => {
     return {
         navlist: state.getIn(['header', 'navlist']),
-        navshow: state.getIn(['header', 'navshow'])
+        navshow: state.getIn(['header', 'navshow']),
+        caselist: state.getIn(['ItemSelect', 'styleList']),
     }
 }
 
@@ -123,8 +125,36 @@ const mapDispathToProps = (dispatch) => {
                 }
             }
             dispatch(actionsCreators.setNavClassCreators(jsnavlist))
+
+                if(index==2){
+                    axios.get(apiList.data[10].caselist, {
+                        params: {
+                            offset: 1,
+                            limit: 16
+                        }
+                    }).then((res) => {
+                        sessionStorage.setItem("styleindex",null);
+                        sessionStorage.setItem("typeindex",null);
+                        sessionStorage.setItem("budgetindex",null);
+                        let getdataArr = {
+                            offset: 1,
+                            limit: 16,
+                            style:"",
+                            type:"",
+                            begPrice:"",
+                            endPrice:""
+                        }
+                        sessionStorage.setItem("dataArr",JSON.stringify(getdataArr));
+                        let allnum = res.data.total / 16 * 10;
+                        let itemlist = res.data.list;
+                        dispatch(CaseactionsCreators.opengetdataCreators(allnum,itemlist))
+
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                }
         },
-        navInnerClick(navlist, index,innerindex) {
+        navInnerClick(navlist, index,innerindex,title,caselist) {
             let jsnavlist = navlist.toJS();
             for (let i = 0; i < jsnavlist.length; i++) {
                 if (i == index) {
@@ -146,6 +176,7 @@ const mapDispathToProps = (dispatch) => {
                 }
             }
             dispatch(actionsCreators.navInnerClickCreators(jsnavlist))
+            dispatch(CaseactionsCreators.headerInnerNavClickCreatore(innerindex,title,caselist))
         }
     }
 }

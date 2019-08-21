@@ -6,6 +6,7 @@ import {reducer as knowledge} from '../page/content/Home/Decorate_a_knowledge/st
 import {reducer as Brand_strength} from '../page/content/Brand_strength/server_banner/store';
 import {reducer as Ticker_reducre} from '../page/content/Home/ticker/store';
 import {reducer as Freeserver_reducre} from '../page/content/Free_service/store';
+import {reducer as ItemSelect} from '../page/content/case/selectcase/store';
 
 const reducer= combineReducers({
     header:hedaderReducer,
@@ -14,7 +15,8 @@ const reducer= combineReducers({
     knowledgelist:knowledge,
     Brand_strength,
     Ticker_reducre,
-    Freeserver_reducre
+    Freeserver_reducre,
+    ItemSelect
     
 })
 export default reducer;

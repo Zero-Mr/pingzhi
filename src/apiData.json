@@ -9,6 +9,8 @@
         {"alltelnum":"http://test.pz.com/api/quote/getQuoteCount"},
         {"adduserdata":"http://test.pz.com/api/quote/setService"},
         {"splice_hover":"/api/splice_hover.json"},
-        {"characteristiclist":"http://test.pz.com/api/item/getItemList"}
+        {"characteristiclist":"http://test.pz.com/api/item/getItemList"},
+        {"caselist":"http://test.pz.com/api/house_design/getDesignList"},
+        {"getDesignDetail":"http://test.pz.com/api/house_design/getDesignDetail"}
     ]
 }

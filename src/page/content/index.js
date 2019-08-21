@@ -5,6 +5,9 @@ import Home from './Home'
 import Brand_strength from './Brand_strength'
 import Contact_Us from './Contact_Us'
 import FreeServer from './Free_service'
+import Case from './case'
+import Details from './Details'
+import Question from './Question'
 const {  Content } = Layout;
 
 class ContentWrap extends PureComponent {
@@ -15,6 +18,9 @@ class ContentWrap extends PureComponent {
                 <Route path='/Brand-strength' exact component={Brand_strength} />
                 <Route path='/Contact-us' exact component={Contact_Us} />
                 <Route path='/Free-service' exact component={FreeServer} />
+                <Route path='/Decorate-a-case/:id' component={Case} />
+                <Route path='/Details/:id' component={Details} />
+                <Route path='/Decorate-a-knowledge' component={Question} />
             </Content>
         )
     }
