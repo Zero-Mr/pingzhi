@@ -7,6 +7,7 @@ import {reducer as Brand_strength} from '../page/content/Brand_strength/server_b
 import {reducer as Ticker_reducre} from '../page/content/Home/ticker/store';
 import {reducer as Freeserver_reducre} from '../page/content/Free_service/store';
 import {reducer as ItemSelect} from '../page/content/case/selectcase/store';
+import {reducer as process} from '../page/content/Process/store';
 
 const reducer= combineReducers({
     header:hedaderReducer,
@@ -16,7 +17,8 @@ const reducer= combineReducers({
     Brand_strength,
     Ticker_reducre,
     Freeserver_reducre,
-    ItemSelect
+    ItemSelect,
+    process
     
 })
 export default reducer;

@@ -8,6 +8,7 @@ import FreeServer from './Free_service'
 import Case from './case'
 import Details from './Details'
 import Question from './Question'
+import Know_how from './Process'
 const {  Content } = Layout;
 
 class ContentWrap extends PureComponent {
@@ -21,6 +22,7 @@ class ContentWrap extends PureComponent {
                 <Route path='/Decorate-a-case/:id' component={Case} />
                 <Route path='/Details/:id' component={Details} />
                 <Route path='/Decorate-a-knowledge' component={Question} />
+                <Route path='/Know-how/:id/:classification' component={Know_how} />
             </Content>
         )
     }

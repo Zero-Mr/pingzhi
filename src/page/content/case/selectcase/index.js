@@ -128,7 +128,6 @@ class CaseSelect extends Component {
     
     }
 
-
 }
 
 const mapState = (state) => {

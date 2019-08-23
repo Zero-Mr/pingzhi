@@ -138,11 +138,13 @@ export const headerInnerNavClickCreatore =(index,title,caselist) =>(dispatch) =>
                 navlist[i].status=false
             }
         }
+
         axios.get(apiList.data[10].caselist, {
             params: {
                 offset: 1,
                 limit: 16,
-                style:title
+                style:title,
+                type:''
             }
         }).then((res) => {
             let itemlist = res.data.list;

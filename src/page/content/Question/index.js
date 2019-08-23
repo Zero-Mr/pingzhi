@@ -19,11 +19,15 @@ class Question extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            fengshuilist:[]
+            fengshuilist:[],
+            questions:[],
+            renovation:[]
         }
     }
 
     render() {
+        const { fengshuilist , questions,renovation} = this.state;
+        const { before , ins,after } = this.props;
         return (
             <QuestionWrap>
                 <div className="Question-banner">
@@ -59,34 +63,29 @@ class Question extends PureComponent {
                                 cover={<img alt="example" src={processimg_1} />}
                             >
                                 <ul className="list-inline">
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="key" />
-                                            <br />
-                                            收房
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="edit" />
-                                            <br />
-                                            设计
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="calculator" />
-                                            <br />
-                                            预算
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="file-protect" />
-                                            <br />
-                                            合同
-                                        </Link>
-                                    </li>
+                                    {
+                                            before.map((item,index)=>{
+                                                let icontype;
+                                                if(index==0){
+                                                    icontype='key'
+                                                }else if(index==1){
+                                                    icontype='edit'
+                                                }else if(index==2){
+                                                    icontype='calculator'
+                                                }else if(index==3){
+                                                    icontype='file-protect'
+                                                }
+                                                return (
+                                                    <li key={index}>
+                                                        <Link to={'/Know-how/'+item.get('id')+':'+index+'/before'}>
+                                                            <Icon type={icontype} />
+                                                            <br />
+                                                            {item.get('text')}
+                                                        </Link>
+                                                    </li>
+                                                )
+                                            })
+                                        }
                                 </ul>
                             </Card>
                         </Col>
@@ -96,65 +95,62 @@ class Question extends PureComponent {
                                 cover={<img alt="example" src={processimg_2} />}
                             >
                                 <ul>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="tool" />
-                                            <br />
-                                            拆改
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="thunderbolt" />
-                                            <br />
-                                            水电
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="bg-colors" />
-                                            <br />
-                                            防水
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="gold" />
-                                            <br />
-                                            泥瓦
-                                            </Link>
-                                    </li>
+                                    {
+                                        ins.map((item,index)=>{
+                                            
+                                            let icontype;
+                                            if(index==0){
+                                                icontype='tool'
+                                            }else if(index==1){
+                                                icontype='thunderbolt'
+                                            }else if(index==2){
+                                                icontype='bg-colors'
+                                            }else if(index==3){
+                                                icontype='gold'
+                                            }
+                                            if(index>=0 && index<=3){
+                                                return(
+                                                    <li key={index}>
+                                                        <Link to={'/Know-how/'+item.get('id')+':'+index+'/in'}>
+                                                        <Icon type={icontype} />
+                                                        <br />
+                                                        {item.get('text')}
+                                                    </Link>
+                                                    </li>
+                                                )
+                                            }
+                                          
+                                        })
+                                    }
                                 </ul>
-                                <ul>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="pic-center" />
-                                            <br />
-                                            木工
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="experiment" />
-                                            <br />
-                                            油漆
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="flag" />
-                                            <br />
-                                            竣工
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="ellipsis" />
-                                            <br />
-                                            更多
-                                            </Link>
-                                    </li>
-                                </ul>
+                               <ul>
+                                    {       
+                                        ins.map((item,index)=>{            
+                                            let icontype;
+                                            if(index==4){
+                                                icontype='pic-center'
+                                            }else if(index==5){
+                                                icontype='experiment'
+                                            }else if(index==6){
+                                                icontype='flag'
+                                            }else if(index==7){
+                                                icontype='ellipsis'
+                                            }
+                                            if(index>3){
+                                                return(
+                                                    <li key={index}>
+                                                        <Link to={'/Know-how/'+item.get('id')+':'+index+'/in'}>
+                                                        <Icon type={icontype} />
+                                                        <br />
+                                                        {item.get('text')}
+                                                    </Link>
+                                                    </li>
+                                                )
+                                            }
+                                          
+                                        })
+                                    }
+                               </ul>
                             </Card>
                         </Col>
                         <Col xs={7} sm={7} md={7} lg={7} xl={7} className="gutter-row">
@@ -163,20 +159,25 @@ class Question extends PureComponent {
                                 cover={<img alt="example" src={processimg_3} />}
                             >
                                 <ul>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="profile" />
-                                            <br />
-                                            软装
-                                            </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">
-                                            <Icon type="home" />
-                                            <br />
-                                            入住
-                                            </Link>
-                                    </li>
+                                    {
+                                        after.map((item,index)=>{
+                                            let icontype;
+                                            if(index == 0){
+                                                icontype='profile'
+                                            }else if(index == 1){
+                                                icontype='home'
+                                            }
+                                            return (
+                                                <li key={index}>
+                                                    <Link to={'/Know-how/'+item.get('id')+':'+index+'/after'}>
+                                                        <Icon type={icontype} />
+                                                        <br />
+                                                        {item.get('text')}
+                                                    </Link>
+                                                </li>
+                                            )
+                                        })
+                                    }
                                 </ul>
                             </Card>
                         </Col>
@@ -184,22 +185,157 @@ class Question extends PureComponent {
                 </div>
                 <div className="feng-shui">
                     <div className="feng-shui-wrap">
-                        <h3>家居风水 <span className="floatRight"><Link to="/">全部</Link></span> </h3>
+                        <h3>家居风水 <span className="floatRight"><Link to="/Know-how/003/fengshui">全部</Link></span> </h3>
                         <Row type="flex" justify="space-around" align="middle">
-                            <Col xs={7} sm={7} md={7} lg={7} xl={7} className="feng-shui-item">
-                                 <Link to="">
-                                     <img src="https://cdn2.ijuzhong.com/ijuzhong_public/upload/20190809/cabba9869616cdc343d1eb0e64d37319.png?x-oss-process=style/web" alt="" className="imgres" />
-                                     <p>玄关怎么设计才合理？该注意哪些风水问题？</p>
-                                 </Link>
-                            </Col>
-                            <Col xs={7} sm={7} md={7} lg={7} xl={7}>
-                                   2
-                            </Col>
-                            <Col xs={7} sm={7} md={7} lg={7} xl={7}>
-                                    3
+                            {
+                                fengshuilist && fengshuilist.map((item,index)=>{
+                                    if(index<=1){
+                                        return(
+                                            <Col key={index} xs={12} sm={12} md={7} lg={7} xl={7} className="feng-shui-item">
+                                                <Link to="">
+                                                    <img src={ item.image} alt="" className="imgres" />
+                                                    <p>{item.title}</p>
+                                                </Link>
+                                            </Col>
+                                        )
+                                    }
+                                })
+                            }
+
+                            <Col xs={24} sm={24} md={7} lg={7} xl={7}>
+                                    {
+                                       fengshuilist && fengshuilist.map((item,index)=>{
+                                           if(index>=2){
+                                               return (
+                                                <Col className="fengshui-three-item" key={index} xs={8} sm={8} md={24} lg={24} xl={24}>
+                                                    <Link to="">
+                                                           <img src={ item.image} alt="" className="imgres" />
+                                                           <span>{item.title}</span>
+                                                    </Link>
+                                                </Col>
+                                               )
+                                           }
+                                       }) 
+                                    }
                             </Col>
                         </Row>
                     </div>
+                </div>
+                <div className="questions-and-answers">
+                        <div className="questions-and-answers-content">
+                                <h3 className="title">装修问答</h3>
+                                <Row>
+                                    <Col className="Doubt-item" xs={24} sm={24} md={12} lg={12} xl={12}>
+                                        <h4>品智常见疑问 <Link to="/Know-how/001:0/question" className="floatRight">全部>></Link> </h4>
+        
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                                            {
+                                                questions && questions.map((item,index)=>{
+                                                    if(index==0){
+                                                        return (
+                                                           <div key={index} className={"Doubt"+index}>
+                                                                <Link to="">
+                                                                        <img src={item.image} alt="" className="imgres"/>
+                                                                        <p>{item.title}</p>
+                                                                </Link>
+                                                           </div> 
+                                                        )
+                                                    }
+                                                    if(index>=1 && index <=3){
+                                                        return (
+                                                            <div key={index} className={"Doubt-list Doubt-list-"+index}>
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link to="">
+                                                                           · {item.title}
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
+                                            }             
+                                        </Col>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                                            {
+                                                questions && questions.map((item,index)=>{
+                                                    if(index>=4){
+                                                        return (
+                                                            <div key={index} className={"Doubt-list margin-b Doubt-list-"+index}>
+                                                                <Link to="">
+                                                                    <div className="dis-inline">
+                                                                        <img src={item.image} alt="" className="imgres"/>
+
+                                                                    </div>
+                                                                    <div className="dis-inline">
+                                                                    <p>{item.title}</p>
+
+                                                                    </div>
+                                                                </Link>
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                        </Col>
+                                    </Col>
+                                    <Col className="Doubt-item" xs={24} sm={24} md={12} lg={12} xl={12}>
+                                          <h4>装修常见疑问 <Link to="/Know-how/002:1/question" className="floatRight">全部>></Link> </h4>
+                                          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                                            {
+                                                renovation && renovation.map((item,index)=>{
+                                                    if(index==0){
+                                                        return (
+                                                           <div key={index} className={"Doubt"+index}>
+                                                              <Link to="">
+                                                                    <img src={item.image} alt="" className="imgres"/>
+                                                                    <p>{item.title}</p>
+                                                              </Link>
+                                                           </div> 
+                                                        )
+                                                    }
+                                                    if(index>=1 && index <=3){
+                                                        return (
+                                                            <div key={index} className={"Doubt-list Doubt-list-"+index}>
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link to="">
+                                                                           · {item.title}
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
+                                            }             
+                                        </Col>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                                            {
+                                                renovation && renovation.map((item,index)=>{
+                                                    if(index>=4){
+                                                        return (
+                                                            <div key={index} className={"Doubt-list margin-b Doubt-list-"+index}>
+                                                                <Link to="">
+                                                                <div className="dis-inline">
+                                                                    <img src={item.image} alt="" className="imgres"/>
+
+                                                                </div>
+                                                                <div className="dis-inline">
+                                                                   <p>{item.title}</p>
+
+                                                                </div>
+                                                                </Link>
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                        </Col>
+                                    </Col>
+                                </Row>
+                        </div>
                 </div>
             </QuestionWrap>
         )
@@ -213,10 +349,11 @@ class Question extends PureComponent {
                 option:true
             }
         }).then((res)=>{
-            let fengshuilist = res.data.list;
-            console.log(fengshuilist)
+            let data = res.data;
             thiss.setState({
-                fengshuilist
+                fengshuilist:data[0],
+                questions:data[1],
+                renovation:data[2]
             })
         })
     
@@ -225,6 +362,14 @@ class Question extends PureComponent {
 
 }
 
+const mapState = (state) =>{
+    return {
+        before:state.getIn(['process','processdata','before',0,'list']),
+        ins:state.getIn(['process','processdata','in',0,'list']),
+        after:state.getIn(['process','processdata','after',0,'list'])
+        
+    }
+}
 
 
-export default connect(null, null)(Question)
+export default connect(mapState, null)(Question)

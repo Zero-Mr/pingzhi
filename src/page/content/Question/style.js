@@ -75,6 +75,9 @@ export const QuestionWrap= styled.div`
               font-size:30px;
               span{
                   font-size:14px;
+                  a{
+                      color:#999
+                  }
               }
           }
           .feng-shui-item{
@@ -89,6 +92,113 @@ export const QuestionWrap= styled.div`
                   margin-bottom:0;
                   color:#fff;
               }
+          }
+          .fengshui-three-item{
+              a{
+            
+                  img{
+                      width:120px;
+                      height: 94px;
+                      @media (max-width:767px) {
+                          max-width:100%;
+                          width:100%;
+                          display:block;
+                          height: 104px;
+                      }
+                  }
+                  span{
+                      vertical-align:top;
+                      color:#999;
+                      font-size:15px;
+                      @media (max-width:767px){
+                          text-align:center;
+                          display:block;
+                      }
+                  }
+              }
+          }
+      }
+  }
+  .questions-and-answers{
+      margin-top:80px;
+      padding-bottom:80px;
+      .questions-and-answers-content{
+          max-width:1280px;
+          margin:0 auto;
+          .Doubt-item{
+              padding-right:20px;
+          }
+          .title{
+              font-size:30px;
+          }
+          a{
+              color:#999;
+          }
+          .Doubt0{
+              position: relative;
+              img{
+                  width:100%;
+                  max-height:234px;
+              }
+              p{
+                  padding:10px;
+                  color:#fff;
+                  width:100%;
+                  position:absolute;
+                  left: 0;
+                  bottom:0;
+                  background-color:rgba(0,0,0,.4);
+                  margin-bottom:0px
+              }
+          }
+          .Doubt-list{
+              width:100%;
+              display:block;
+              @media (max-width:767px) {
+                  text-align:center;
+              }
+              .imgclass{
+                  display:inline-block;
+                  width:100px;
+                  height: 100px;
+                  @media (max-width:767px) {
+                      display:block;
+                      width:60%;
+                      margin:0 auto;
+                      height: auto;
+                  }
+              }
+              a{
+                  vertical-align:top
+              }
+              .dis-inline{
+                  display:inline-block;
+                  width:100px;
+                  text-align:center;
+                  vertical-align:top;
+                  height: 100px;
+                  overflow:hidden;
+                  img{
+                      width:100px;
+                      height: 100px;;
+                  }
+                  p{
+                      vertical-align:top;
+                      margin-bottom:0;
+                      width:100%;
+                      height: 20px;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
+                  }
+              }
+          }
+          .margin-b{
+              margin-bottom:15px;
+              padding-left:10px;
+              @media (max-width:767px) {
+                padding-left:0;
+                  }
           }
       }
   }

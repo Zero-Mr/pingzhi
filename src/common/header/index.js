@@ -45,12 +45,13 @@ class HeaderWrap extends Component {
                             {
                                 navlist.map((item, index) => {
                                     let content;
-
+      
                                     if (item.get("innerdata")) {
+     
                                         content = item.get("innerdata").map((innerItem,innerindex) => (
                                             <Menu.Item className={innerItem.get('status') ? 'dis-inline active' : 'dis-inline'} key={innerItem.get('id')}>
                                                 <Link
-                                                    to={'/Decorate-a-case/'+innerindex}
+                                                    to={innerItem.get('link') }        
                                                     onClick={() => navInnerClick(navlist, index,innerindex,innerItem.get('title'),caselist)}
                                                 >
                                                     {innerItem.get('title')}
@@ -155,6 +156,8 @@ const mapDispathToProps = (dispatch) => {
                 }
         },
         navInnerClick(navlist, index,innerindex,title,caselist) {
+            sessionStorage.setItem("typeindex",null);
+            sessionStorage.setItem("budgetindex",null);
             let jsnavlist = navlist.toJS();
             for (let i = 0; i < jsnavlist.length; i++) {
                 if (i == index) {
@@ -176,7 +179,10 @@ const mapDispathToProps = (dispatch) => {
                 }
             }
             dispatch(actionsCreators.navInnerClickCreators(jsnavlist))
-            dispatch(CaseactionsCreators.headerInnerNavClickCreatore(innerindex,title,caselist))
+            if(index==2){
+                dispatch(CaseactionsCreators.headerInnerNavClickCreatore(innerindex,title,caselist))
+            }
+
         }
     }
 }
