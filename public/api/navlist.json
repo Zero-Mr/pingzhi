@@ -16,7 +16,7 @@
         },
         {"title":"装修知识","link":"/Decorate-a-knowledge","component":"Decorate_a_knowledge","id":3,"status":false,"innerdata":[
             {"title":"装修问答","link":"/Know-how/001:0/question","id":0,"status":false},
-            {"title":"装修流程","link":"/Know-how/0000:0/all","id":1,"status":false},
+            {"title":"装修流程","link":"/Know-how/12:7/in","id":1,"status":false},
             {"title":"常见疑问","link":"/Know-how/002:0/question","id":2,"status":false},
             {"title":"装修前","link":"/Know-how/1:0/before","id":3,"status":false},
             {"title":"装修中","link":"/Know-how/5:0/in","id":4,"status":false},

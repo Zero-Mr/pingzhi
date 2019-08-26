@@ -1,1 +1,7 @@
 export const PROESS_SETSTATUS = 'PROESS_SETSTATUS'
+export const PROESS_CHANGEPAGE = 'PROESS_CHANGEPAGE'
+export const PROESS_SETARRDATA = 'PROESS_SETARRDATA'
+export const PROESS_CHANGESELECT = 'PROESS_CHANGESELECT'
+export const PROESS_CHANGEPAGEDATA = 'PROESS_CHANGEPAGEDATA'
+export const PROESS_NavClickOneAction = 'PROESS_NavClickOneAction'
+export const PROESS_NavClickTwoAction = 'PROESS_NavClickTwoAction'

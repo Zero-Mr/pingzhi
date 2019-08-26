@@ -35,7 +35,7 @@ const defaultState = fromJS({
                 title:"装修后-入住阶段",
                 list:[
                     {text:"软装",status:false,id:12},
-                    {text:"硬装",status:false,id:13},
+                    {text:"入住",status:false,id:13},
                 ]
             }
         ],
@@ -44,19 +44,25 @@ const defaultState = fromJS({
                 title:'装修问答',
                 list:[
                     {text:"品智常见问题",status:false,id:14},
-                    {text:"装修常见问题",status:false,id:15}
+                    {text:"装修常见疑问",status:false,id:15}
                 ]
             }
         ],
         fengshui:[
             {
-                title:"装修风水",status:false
+                title:"装修风水",status:false,
+                list:[
+                    {text:"",status:false,id:16},
+                ]
             }
         ]
     },
     urlID:"",
     nowAddress:"",
-    classification:''
+    classification:'',
+    current: 1,
+    totalpage:0,
+    itemdata:[]
 })
 
 export default (state = defaultState , action) => {
@@ -72,6 +78,28 @@ export default (state = defaultState , action) => {
               .setIn(['processdata','in',0,'list'],fromJS(action.JSin))
               .setIn(['processdata','question',0,'list'],fromJS(action.JSquestion))
               .setIn(['processdata','after',0,'list'],fromJS(action.JSafter))
+        case actionTypes.PROESS_CHANGEPAGE:
+            return state.set('current',action.page)      
+        case actionTypes.PROESS_SETARRDATA:
+            return state.merge({
+                itemdata:fromJS(action.data),
+                totalpage:action.total,
+                current:1
+            }) 
+        case actionTypes.PROESS_CHANGEPAGEDATA:
+            return state.merge({
+                itemdata:fromJS(action.data),
+                current:action.page
+            }) 
+        case actionTypes.PROESS_CHANGESELECT:
+            return state.setIn(['processdata','before',0,'list'],fromJS(action.beforedata))
+            .setIn(['processdata','in',0,'list'],fromJS(action.indata))
+            .setIn(['processdata','question',0,'list'],fromJS(action.questiondata))
+            .setIn(['processdata','after',0,'list'],fromJS(action.afterdata))
+        case actionTypes.PROESS_NavClickOneAction:
+            return state.set('urlID','001')    
+        case actionTypes.PROESS_NavClickTwoAction:
+            return state.set('urlID','00')    
         default:
             return state
     }   

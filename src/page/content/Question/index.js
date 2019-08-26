@@ -185,7 +185,7 @@ class Question extends PureComponent {
                 </div>
                 <div className="feng-shui">
                     <div className="feng-shui-wrap">
-                        <h3>家居风水 <span className="floatRight"><Link to="/Know-how/003/fengshui">全部</Link></span> </h3>
+                        <h3>家居风水 <span className="floatRight"><Link to="/Know-how/003:0/fengshui">全部</Link></span> </h3>
                         <Row type="flex" justify="space-around" align="middle">
                             {
                                 fengshuilist && fengshuilist.map((item,index)=>{

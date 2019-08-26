@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { actionsCreators } from './store'
 import { CaseactionsCreators } from '../../page/content/case/selectcase/store'
+import { ProcessactionsCreators } from '../../page/content/Process/store'
 import logo from '../../statics/logo.png'
 
 import {
@@ -22,7 +23,7 @@ const { SubMenu } = Menu;
 
 class HeaderWrap extends Component {
     render() {
-        const { navlist, navshow, setNavShow, setNavClass, navInnerClick,caselist } = this.props;
+        const { navlist, navshow, setNavShow, setNavClass, navInnerClick, caselist } = this.props;
         return (
             <Header>
                 <Icon type="menu" onClick={() => setNavShow(navshow)} className="menu-btn visible-xs" />
@@ -45,14 +46,14 @@ class HeaderWrap extends Component {
                             {
                                 navlist.map((item, index) => {
                                     let content;
-      
+
                                     if (item.get("innerdata")) {
-     
-                                        content = item.get("innerdata").map((innerItem,innerindex) => (
+
+                                        content = item.get("innerdata").map((innerItem, innerindex) => (
                                             <Menu.Item className={innerItem.get('status') ? 'dis-inline active' : 'dis-inline'} key={innerItem.get('id')}>
                                                 <Link
-                                                    to={innerItem.get('link') }        
-                                                    onClick={() => navInnerClick(navlist, index,innerindex,innerItem.get('title'),caselist)}
+                                                    to={innerItem.get('link')}
+                                                    onClick={() => navInnerClick(navlist, index, innerindex, innerItem.get('title'), caselist)}
                                                 >
                                                     {innerItem.get('title')}
                                                 </Link>
@@ -127,37 +128,37 @@ const mapDispathToProps = (dispatch) => {
             }
             dispatch(actionsCreators.setNavClassCreators(jsnavlist))
 
-                if(index==2){
-                    axios.get(apiList.data[10].caselist, {
-                        params: {
-                            offset: 1,
-                            limit: 16
-                        }
-                    }).then((res) => {
-                        sessionStorage.setItem("styleindex",null);
-                        sessionStorage.setItem("typeindex",null);
-                        sessionStorage.setItem("budgetindex",null);
-                        let getdataArr = {
-                            offset: 1,
-                            limit: 16,
-                            style:"",
-                            type:"",
-                            begPrice:"",
-                            endPrice:""
-                        }
-                        sessionStorage.setItem("dataArr",JSON.stringify(getdataArr));
-                        let allnum = res.data.total / 16 * 10;
-                        let itemlist = res.data.list;
-                        dispatch(CaseactionsCreators.opengetdataCreators(allnum,itemlist))
+            if (index == 2) {
+                axios.get(apiList.data[10].caselist, {
+                    params: {
+                        offset: 1,
+                        limit: 16
+                    }
+                }).then((res) => {
+                    sessionStorage.setItem("styleindex", null);
+                    sessionStorage.setItem("typeindex", null);
+                    sessionStorage.setItem("budgetindex", null);
+                    let getdataArr = {
+                        offset: 1,
+                        limit: 16,
+                        style: "",
+                        type: "",
+                        begPrice: "",
+                        endPrice: ""
+                    }
+                    sessionStorage.setItem("dataArr", JSON.stringify(getdataArr));
+                    let allnum = res.data.total / 16 * 10;
+                    let itemlist = res.data.list;
+                    dispatch(CaseactionsCreators.opengetdataCreators(allnum, itemlist))
 
-                    }).catch((error) => {
-                        console.log(error)
-                    })
-                }
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
         },
-        navInnerClick(navlist, index,innerindex,title,caselist) {
-            sessionStorage.setItem("typeindex",null);
-            sessionStorage.setItem("budgetindex",null);
+        navInnerClick(navlist, index, innerindex, title, caselist) {
+            sessionStorage.setItem("typeindex", null);
+            sessionStorage.setItem("budgetindex", null);
             let jsnavlist = navlist.toJS();
             for (let i = 0; i < jsnavlist.length; i++) {
                 if (i == index) {
@@ -165,24 +166,53 @@ const mapDispathToProps = (dispatch) => {
                 } else {
                     jsnavlist[i].status = false;
                 }
-                if(jsnavlist[i].innerdata){
-                    for(let c =0;c<jsnavlist[i].innerdata.length;c++){
-                        jsnavlist[i].innerdata[c].status=false
+                if (jsnavlist[i].innerdata) {
+                    for (let c = 0; c < jsnavlist[i].innerdata.length; c++) {
+                        jsnavlist[i].innerdata[c].status = false
                     }
                 }
             }
-            for(let b=0;b<jsnavlist[index].innerdata.length;b++){
-                if(b==innerindex){
-                    jsnavlist[index].innerdata[b].status=true
-                }else{
-                    jsnavlist[index].innerdata[b].status=false
+            for (let b = 0; b < jsnavlist[index].innerdata.length; b++) {
+                if (b == innerindex) {
+                    jsnavlist[index].innerdata[b].status = true
+                } else {
+                    jsnavlist[index].innerdata[b].status = false
                 }
             }
             dispatch(actionsCreators.navInnerClickCreators(jsnavlist))
-            if(index==2){
-                dispatch(CaseactionsCreators.headerInnerNavClickCreatore(innerindex,title,caselist))
+            if (index == 2) {
+                dispatch(CaseactionsCreators.headerInnerNavClickCreatore(innerindex, title, caselist))
             }
-
+            if (index == 3) {
+                switch (innerindex) {
+                    case 0:
+                        sessionStorage.setItem('typesof', 'pz_proble');
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        break;
+                    case 1:
+                        sessionStorage.setItem('typesof', 'all');
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        break;
+                    case 2:
+                        sessionStorage.setItem('typesof', 'dc_question');
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        break;
+                    case 3:
+                        sessionStorage.setItem('typesof', 'q_sf');
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        break;
+                    case 4:
+                        sessionStorage.setItem('typesof', 'z_cg');
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        break;
+                    case 5:
+                        sessionStorage.setItem('typesof', 'h_rzh');
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
