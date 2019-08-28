@@ -17,12 +17,14 @@ class Details extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            isFixed: false
         }
     }
 
     render() {
-        const { data } = this.state
+        const { data ,isFixed} = this.state
+     
         return (
             <DetailsWrap>
                 <div className="bannercont">
@@ -42,8 +44,7 @@ class Details extends PureComponent {
                     </Breadcrumb>
 
                     <Row>
-
-                        <Col xs={24} sm={24} md={17} lg={17} xl={17} className="databox">
+                        <Col xs={24} sm={24} md={17} lg={17} xl={17} className="databox" id="databox ">
                             <h1 className="text-center title">
                                 {data.title}
                             </h1>
@@ -59,8 +60,10 @@ class Details extends PureComponent {
                                 </Descriptions.Item>
                             </Descriptions>
                             <div className="imgbox">
+                   
+
                                 <Row>
-                                    <Col xs={3} sm={3} md={3} lg={3} xl={3}>
+                                    <Col xs={3} sm={3} md={3} lg={3} xl={3} id="bignav" className={ isFixed ? "floatLeft fixed" : "floatLeft" }>
                                         <Timeline>
                                             {
                                             data.images && data.images.map((item,index) =>{
@@ -75,7 +78,7 @@ class Details extends PureComponent {
                                             }
                                         </Timeline>
                                     </Col>
-                                    <Col xs={21} sm={21} md={21} lg={21} xl={21}>
+                                    <Col xs={21} sm={21} md={21} lg={21} xl={21} className="floatRight">
                                         {
                                             data.images && data.images.map((item,index)=>{
                                                 return (
@@ -119,6 +122,7 @@ class Details extends PureComponent {
                 </div>
             </DetailsWrap>
         )
+     
     }
     componentDidMount() {
         let id = this.props.match.params.id;
@@ -132,10 +136,40 @@ class Details extends PureComponent {
             thiss.setState({
                 data
             })
+
+            let dombox = document.getElementById('bignav');
+            function addsad(dom){
+              let top = dom.offsetTop;
+                    let left = dom.offsetLeft;
+                    while (dom = dom.offsetParent) {
+                      top += dom.offsetTop;
+                      left += dom.offsetLeft;
+                    }
+                    return { top, left };
+          }
+
+            let julitop = addsad(dombox).top;
+          
+            window.onscroll = () => {
+              let scrollTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+              //控制元素块A随鼠标滚动固定在顶部
+              if (scrollTop >= julitop) {
+                this.setState({ isFixed: true })
+
+              } 
+              if(scrollTop <= julitop ) {
+                this.setState({ isFixed: false })
+
+              }
+            }
         }).catch((error)=>{
             console.log(error)
         })
+
     }
+
+
+
 }
 
 

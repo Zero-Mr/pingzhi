@@ -5,10 +5,11 @@ import CaseItem from './caseitem'
 class Case extends PureComponent {
 
     render() {
+        let urlID = this.props.match.params.id;
         return (
             <div>
-               <CaseSelect />
-               <CaseItem />
+               <CaseSelect urlID={urlID} />
+               <CaseItem  />
             </div>
         )
     }

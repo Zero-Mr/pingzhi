@@ -127,6 +127,9 @@ export const QuestionWrap= styled.div`
           margin:0 auto;
           .Doubt-item{
               padding-right:20px;
+              @media (max-width:767px) {
+                padding-right:0px;
+              }
           }
           .title{
               font-size:30px;
@@ -178,9 +181,17 @@ export const QuestionWrap= styled.div`
                   vertical-align:top;
                   height: 100px;
                   overflow:hidden;
+                  @media (max-width:767px) {
+                        width:200px;
+                        height: 200px;  
+                  }
                   img{
                       width:100px;
                       height: 100px;;
+                      @media (max-width:767px) {
+                          width:200px;
+                          height:200px;
+                      }
                   }
                   p{
                       vertical-align:top;
@@ -190,6 +201,14 @@ export const QuestionWrap= styled.div`
                         overflow: hidden;
                         text-overflow:ellipsis;
                         white-space: nowrap;
+                  }
+              }
+              .dis-inline:nth-of-type(2){
+                @media (max-width:767px) {
+                        width:auto;
+                        height: auto;  
+                        display:block;
+                        margin-bottom:15px;
                   }
               }
           }

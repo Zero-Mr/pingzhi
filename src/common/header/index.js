@@ -23,7 +23,7 @@ const { SubMenu } = Menu;
 
 class HeaderWrap extends Component {
     render() {
-        const { navlist, navshow, setNavShow, setNavClass, navInnerClick, caselist } = this.props;
+        const { navlist, navshow, setNavShow, setNavClass, navInnerClick, caselist ,knowdata,searchclick,closeNav} = this.props;
         return (
             <Header>
                 <Icon type="menu" onClick={() => setNavShow(navshow)} className="menu-btn visible-xs" />
@@ -35,14 +35,16 @@ class HeaderWrap extends Component {
                                 <img src={logo} alt="" className="imgres logoimg" />
                             </Link>
                         </Col>
-                        <Col className="floatRight hidden-xs" span={6}> <Search placeholder="请输入搜索关键词" onSearch={value => console.log(value)} /> </Col>
+                        <Col className="floatRight hidden-xs" span={6}> <Search placeholder="请输入搜索关键词" onSearch={ (value) => searchclick(value) } /> </Col>
                     </Row>
                 </HeaderWrapdom>
 
                 <ConstHeaderNav>
                     <NavWrap>
-                        <Menu style={{ width: 100 + '%' }} mode="vertical" className={navshow ? "nav-ul list-inline isshow" : "nav-ul list-inline"}>
+                    <Search className='visible-xs' placeholder="请输入搜索关键词" onSearch={ (value) => searchclick(value) } /> 
 
+                        <Menu style={{ width: 100 + '%' }} mode="vertical" className={navshow ? "nav-ul list-inline isshow" : "nav-ul list-inline"}>
+                            
                             {
                                 navlist.map((item, index) => {
                                     let content;
@@ -53,7 +55,7 @@ class HeaderWrap extends Component {
                                             <Menu.Item className={innerItem.get('status') ? 'dis-inline active' : 'dis-inline'} key={innerItem.get('id')}>
                                                 <Link
                                                     to={innerItem.get('link')}
-                                                    onClick={() => navInnerClick(navlist, index, innerindex, innerItem.get('title'), caselist)}
+                                                    onClick={() => navInnerClick(navlist, index, innerindex, innerItem.get('title'), caselist,knowdata)}
                                                 >
                                                     {innerItem.get('title')}
                                                 </Link>
@@ -105,11 +107,15 @@ const mapStateToProps = (state) => {
         navlist: state.getIn(['header', 'navlist']),
         navshow: state.getIn(['header', 'navshow']),
         caselist: state.getIn(['ItemSelect', 'styleList']),
+        knowdata: state.getIn(['process', 'processdata'])
     }
 }
 
 const mapDispathToProps = (dispatch) => {
     return {
+        searchclick(value){
+            window.location.href ='/search/'+value
+        },
         getNavList() {
             dispatch(actionsCreators.getNavListCreators())
         },
@@ -156,7 +162,7 @@ const mapDispathToProps = (dispatch) => {
                 })
             }
         },
-        navInnerClick(navlist, index, innerindex, title, caselist) {
+        navInnerClick(navlist, index, innerindex, title, caselist,knowdata) {
             sessionStorage.setItem("typeindex", null);
             sessionStorage.setItem("budgetindex", null);
             let jsnavlist = navlist.toJS();
@@ -184,30 +190,79 @@ const mapDispathToProps = (dispatch) => {
                 dispatch(CaseactionsCreators.headerInnerNavClickCreatore(innerindex, title, caselist))
             }
             if (index == 3) {
+                let JSknowdata = knowdata.toJS();
+                let JSbeforeList = JSknowdata['before'][0].list;
+                let JSafterList = JSknowdata['after'][0].list;
+                let JSinList = JSknowdata['in'][0].list;
+                let JSquestionList = JSknowdata['question'][0].list;
+                function arrforfun(arr1,arr2,arr3,arr4){
+                    for(let a = 0;a < arr1.length; a++){
+                        if(a == 0){
+                            arr1[a].status = true
+                        }else{
+                            arr1[a].status = false
+                        }
+                    }
+                    for(let b = 0; b < arr2.length; b++){
+                        arr2[b].status = false
+                    }
+                    for(let c = 0; c < arr3.length; c++){
+                        arr3[c].status = false
+                    }
+                    for(let d = 0; d < arr4.length; d++){
+                        arr4[d].status = false
+                    }
+                }
                 switch (innerindex) {
                     case 0:
+                        arrforfun(JSquestionList,JSbeforeList,JSafterList,JSinList);
                         sessionStorage.setItem('typesof', 'pz_proble');
-                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex,JSquestionList,JSbeforeList,JSafterList,JSinList))
                         break;
                     case 1:
+                        let arrinnarr = [JSbeforeList,JSafterList,JSinList,JSquestionList]
+                        for(let a = 0;a<arrinnarr.length;a++){
+                            for(let b=0;b<arrinnarr[a].length;b++){
+                                arrinnarr[a][b].status = false
+                            }
+                        }
                         sessionStorage.setItem('typesof', 'all');
-                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex,arrinnarr[3],arrinnarr[0],arrinnarr[1],arrinnarr[2]))
                         break;
                     case 2:
+                        for(let a = 0;a < JSquestionList.length; a++){
+                            if(a == 1){
+                                JSquestionList[a].status = true
+                            }else{
+                                JSquestionList[a].status = false
+                            }
+                        }
+                        for(let b = 0; b < JSbeforeList.length; b++){
+                            JSbeforeList[b].status = false
+                        }
+                        for(let c = 0; c < JSafterList.length; c++){
+                            JSafterList[c].status = false
+                        }
+                        for(let d = 0; d < JSinList.length; d++){
+                            JSinList[d].status = false
+                        }
                         sessionStorage.setItem('typesof', 'dc_question');
-                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex,JSquestionList,JSbeforeList,JSafterList,JSinList))
                         break;
                     case 3:
+                        arrforfun(JSbeforeList,JSafterList,JSinList,JSquestionList)
                         sessionStorage.setItem('typesof', 'q_sf');
-                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex,JSquestionList,JSbeforeList,JSafterList,JSinList))
                         break;
                     case 4:
+                        arrforfun(JSinList,JSbeforeList,JSafterList,JSquestionList)
                         sessionStorage.setItem('typesof', 'z_cg');
-                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex,JSquestionList,JSbeforeList,JSafterList,JSinList))
                         break;
                     case 5:
+                        arrforfun(JSafterList,JSinList,JSbeforeList,JSquestionList)
                         sessionStorage.setItem('typesof', 'h_rzh');
-                        dispatch(ProcessactionsCreators.Navtypesof(innerindex))
+                        dispatch(ProcessactionsCreators.Navtypesof(innerindex,JSquestionList,JSbeforeList,JSafterList,JSinList))
                         break;
                     default:
                         break;

@@ -22,7 +22,7 @@ class Knowledge extends PureComponent {
                                         header={<div>{item.get('strategy_title')}</div>}
                                         bordered
                                         dataSource={item.get('data')}
-                                        renderItem={item => <List.Item><Link to='/'>{item.get('title')}<span className="floatRight">{item.get('time')}</span></Link></List.Item>}
+                                        renderItem={item => <List.Item><Link to={'/Question-and-answer/'+item.get('id')}>{item.get('title')}<span className="floatRight">{item.get('time')}</span></Link></List.Item>}
                                     />
                                 </Col>
                             )
@@ -34,7 +34,7 @@ class Knowledge extends PureComponent {
         )
     }
     componentDidMount(){
-        this.props.getknowledgelist()
+        this.props.getknowledgelist();
     }
 }
 const mapState = (state) => {

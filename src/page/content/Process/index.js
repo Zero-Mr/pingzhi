@@ -150,7 +150,7 @@ class Process extends PureComponent {
                                 itemdata.map((item,index)=>{
                                     return (
                                         <Row className="item" key={index}>
-                                            <Link to={'/'+item.get('id')}>
+                                            <Link to={'/Question-and-answer/'+item.get('id')}>
                                                 <Col xs={24} sm={24} md={8} lg={8} xl={8} className="imgbox">
                                                     <img alt="" src={item.get('image')} className="imgres" />
                                                 </Col>
@@ -328,7 +328,6 @@ const mapDispathToProps = (dispatch) => {
 
         onChange(page) {
             let typesof = sessionStorage.getItem('typesof');
-            console.log(typesof)
             if( typesof == 'all' ){
                 axios.get(apiList.data[4].knowledge, {
                     params: {

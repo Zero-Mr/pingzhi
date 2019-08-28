@@ -7,6 +7,10 @@ export const DetailsWrap= styled.div`
         margin:0 auto;
         padding-top:20px;
         padding-bottom:30px;
+        #bignav.fixed{
+            position:fixed;
+            top:15px;
+        }
         .databox{
             border:1px solid #ccc;
             padding:10px;
@@ -32,6 +36,7 @@ export const DetailsWrap= styled.div`
                 }
             }
         }
+      
         .add-address{
             margin-top:20px;
             padding:0 30px;

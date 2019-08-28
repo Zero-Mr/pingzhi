@@ -11,6 +11,8 @@
         {"splice_hover":"/api/splice_hover.json"},
         {"characteristiclist":"http://test.pz.com/api/item/getItemList"},
         {"caselist":"http://test.pz.com/api/house_design/getDesignList"},
-        {"getDesignDetail":"http://test.pz.com/api/house_design/getDesignDetail"}
+        {"getDesignDetail":"http://test.pz.com/api/house_design/getDesignDetail"},
+        {"Questionandanswer":"http://test.pz.com/api/cms_article/getCmsDetail"},
+        {"search":"http://test.pz.com/api/search/getSearchList"}
     ]
 }

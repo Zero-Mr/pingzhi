@@ -65,10 +65,8 @@ function selectopcitonfunc(style,begPrice,endPrice,type,dispatch){
         }
     }).then((res)=>{
         let data = res.data.list;
-        let allnum = res.data.total/16*10
-        if(allnum<=0.1 && allnum>=0.9){
-            allnum=1
-        }
+        let allnum = Math.ceil(res.data.total/16*10)
+
         dispatch(selectopcitonAction(data,allnum))
             let getdataArr = {
                 offset: 1,
@@ -121,7 +119,7 @@ export const onChangeCreators = (page,stylestring,typetring,begPrice,endPrice) =
                 }
             }).then((res) => {
                 let itemlist = res.data.list;
-                let allnum = res.data.total/16*10;
+                let allnum = Math.ceil(res.data.total/16*10);
                 dispatch( onChangeAction(page,itemlist,allnum))
             }).catch((error) => {
                 console.log(error)

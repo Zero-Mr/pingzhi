@@ -3,17 +3,17 @@
     "data":[
         {"title":"关注我们","id":0,"list":[
             {"title":"公司官网","link":"/","id":0},
-            {"title":"品牌实力","link":"/","id":1},
-            {"title":"常见问题","link":"/","id":2}
+            {"title":"品牌实力","link":"/Brand-strength","id":1},
+            {"title":"常见问题","link":"/Know-how/001:0/question","id":2}
         ]},
         {"title":"装修服务","id":1,"list":[
-            {"title":"免费服务","link":"/","id":0},
-            {"title":"装修案例","link":"/","id":1},
-            {"title":"装修知识","link":"/","id":2}
+            {"title":"免费服务","link":"/Free-service","id":0},
+            {"title":"装修案例","link":"/Decorate-a-case/00","id":1},
+            {"title":"装修知识","link":"/Decorate-a-knowledge","id":2}
         ]},
         {"title":"联系我们","id":2,"list":[
-            {"title":"公司地址","link":"/","id":0},
-            {"title":"官方微信","link":"/","id":1}
+            {"title":"公司地址","link":"/Contact-us","id":0},
+            {"title":"官方微信","link":"/Contact-us","id":1}
         ]}
         
     ],

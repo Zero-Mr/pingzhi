@@ -48,7 +48,7 @@ class Question extends PureComponent {
                             </div>
                             <p>
                                 <Icon type="warning" />我们承诺：品智装饰提供该项免费服务，绝不产生任何费用，为了您的利益以及我们的口碑，您的隐私将被严格保密。
-                                    </p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ class Question extends PureComponent {
                         装修流程
                     </h1>
                     <Row type="flex" justify="space-around" align="middle">
-                        <Col xs={7} sm={7} md={7} lg={7} xl={7} className="gutter-row">
+                        <Col xs={24} sm={24} md={7} lg={7} xl={7} className="gutter-row">
                             <Card
                                 hoverable
                                 cover={<img alt="example" src={processimg_1} />}
@@ -89,7 +89,7 @@ class Question extends PureComponent {
                                 </ul>
                             </Card>
                         </Col>
-                        <Col xs={7} sm={7} md={7} lg={7} xl={7} className="gutter-row">
+                        <Col xs={24} sm={24} md={7} lg={7} xl={7} className="gutter-row">
                             <Card
                                 hoverable
                                 cover={<img alt="example" src={processimg_2} />}
@@ -153,7 +153,7 @@ class Question extends PureComponent {
                                </ul>
                             </Card>
                         </Col>
-                        <Col xs={7} sm={7} md={7} lg={7} xl={7} className="gutter-row">
+                        <Col xs={24} sm={24} md={7} lg={7} xl={7} className="gutter-row">
                             <Card
                                 hoverable
                                 cover={<img alt="example" src={processimg_3} />}
@@ -192,7 +192,7 @@ class Question extends PureComponent {
                                     if(index<=1){
                                         return(
                                             <Col key={index} xs={12} sm={12} md={7} lg={7} xl={7} className="feng-shui-item">
-                                                <Link to="">
+                                                <Link to={'/Question-and-answer/'+item.id}>
                                                     <img src={ item.image} alt="" className="imgres" />
                                                     <p>{item.title}</p>
                                                 </Link>
@@ -208,7 +208,7 @@ class Question extends PureComponent {
                                            if(index>=2){
                                                return (
                                                 <Col className="fengshui-three-item" key={index} xs={8} sm={8} md={24} lg={24} xl={24}>
-                                                    <Link to="">
+                                                    <Link to={'/Question-and-answer/'+item.id}>
                                                            <img src={ item.image} alt="" className="imgres" />
                                                            <span>{item.title}</span>
                                                     </Link>
@@ -234,7 +234,7 @@ class Question extends PureComponent {
                                                     if(index==0){
                                                         return (
                                                            <div key={index} className={"Doubt"+index}>
-                                                                <Link to="">
+                                                                <Link to={'/Question-and-answer/'+item.id}>
                                                                         <img src={item.image} alt="" className="imgres"/>
                                                                         <p>{item.title}</p>
                                                                 </Link>
@@ -246,7 +246,7 @@ class Question extends PureComponent {
                                                             <div key={index} className={"Doubt-list Doubt-list-"+index}>
                                                                 <ul>
                                                                     <li>
-                                                                        <Link to="">
+                                                                        <Link to={'/Question-and-answer/'+item.id}>
                                                                            · {item.title}
                                                                         </Link>
                                                                     </li>
@@ -263,7 +263,7 @@ class Question extends PureComponent {
                                                     if(index>=4){
                                                         return (
                                                             <div key={index} className={"Doubt-list margin-b Doubt-list-"+index}>
-                                                                <Link to="">
+                                                                <Link to={'/Question-and-answer/'+item.id}>
                                                                     <div className="dis-inline">
                                                                         <img src={item.image} alt="" className="imgres"/>
 
@@ -288,7 +288,7 @@ class Question extends PureComponent {
                                                     if(index==0){
                                                         return (
                                                            <div key={index} className={"Doubt"+index}>
-                                                              <Link to="">
+                                                              <Link to={'/Question-and-answer/'+item.id}>
                                                                     <img src={item.image} alt="" className="imgres"/>
                                                                     <p>{item.title}</p>
                                                               </Link>
@@ -300,7 +300,7 @@ class Question extends PureComponent {
                                                             <div key={index} className={"Doubt-list Doubt-list-"+index}>
                                                                 <ul>
                                                                     <li>
-                                                                        <Link to="">
+                                                                        <Link to={'/Question-and-answer/'+item.id}>
                                                                            · {item.title}
                                                                         </Link>
                                                                     </li>
@@ -317,7 +317,7 @@ class Question extends PureComponent {
                                                     if(index>=4){
                                                         return (
                                                             <div key={index} className={"Doubt-list margin-b Doubt-list-"+index}>
-                                                                <Link to="">
+                                                                <Link to={'/Question-and-answer/'+item.id}>
                                                                 <div className="dis-inline">
                                                                     <img src={item.image} alt="" className="imgres"/>
 

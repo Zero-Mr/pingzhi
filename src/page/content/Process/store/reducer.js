@@ -97,9 +97,15 @@ export default (state = defaultState , action) => {
             .setIn(['processdata','question',0,'list'],fromJS(action.questiondata))
             .setIn(['processdata','after',0,'list'],fromJS(action.afterdata))
         case actionTypes.PROESS_NavClickOneAction:
-            return state.set('urlID','001')    
-        case actionTypes.PROESS_NavClickTwoAction:
-            return state.set('urlID','00')    
+            return state.merge({
+                urlID:action.urlID,
+                itemdata:fromJS(action.axiosarr),
+                totalpage:action.allnum,
+                current:1
+            }).setIn(['processdata','before',0,'list'],fromJS(action.arr2))
+            .setIn(['processdata','in',0,'list'],fromJS(action.arr4))
+            .setIn(['processdata','question',0,'list'],fromJS(action.arr1))
+            .setIn(['processdata','after',0,'list'],fromJS(action.arr3))      
         default:
             return state
     }   

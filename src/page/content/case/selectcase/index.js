@@ -161,12 +161,14 @@ const mapDispathToProps = (dispatch) => {
             dispatch(actionsCreators.openreststyleCreators(data))
         },
         opengetdata(styleList,thiss,typedata,budgetdata){
+
             let str = sessionStorage.getItem("dataArr");
             let obj = JSON.parse(str);
             let styleindex = sessionStorage.getItem("styleindex");
             let typeindex = sessionStorage.getItem("typeindex");
             let budgetindex = sessionStorage.getItem("budgetindex");
-            let styleListJS = styleList.toJS()
+            let styleListJS = styleList.toJS();
+
             if(styleindex!="null"){
                 for(let i = 0 ;i<styleListJS.length;i++){
                     if(i==styleindex){
@@ -210,7 +212,7 @@ const mapDispathToProps = (dispatch) => {
                         limit: 16
                     }
                 }).then((res) => {
-                    let allnum = res.data.total / 16 * 10;
+                    let allnum =Math.ceil( res.data.total / 16 * 10 );
                     let itemlist = res.data.list;
                     dispatch(actionsCreators.opengetdataCreators(allnum,itemlist))
                 }).catch((error) => {
@@ -227,11 +229,14 @@ const mapDispathToProps = (dispatch) => {
                         endPrice: obj.endPrice
                     }
                 }).then((res) => {
-                    let allnum = res.data.total / 16 * 10;
+
+                    let allnum = Math.ceil(res.data.total / 16 * 10);
                     let itemlist = res.data.list;
                     dispatch(actionsCreators.opengetdataCreators(allnum,itemlist))
+
                 }).catch((error) => {
                     console.log(error)
+
                 })
             }
         },

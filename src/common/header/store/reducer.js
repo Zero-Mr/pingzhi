@@ -14,7 +14,7 @@ export default (state = defaultState , action) => {
         case actionTypes.HEADER_CHANGEDNAV:
             return state.set('navshow',action.blomes)
         case actionTypes.HEADER_SETNAVCLASS:
-            return state.set('navlist',fromJS(action.jsnavlist))
+            return state.set('navlist',fromJS(action.jsnavlist)).set('navshow',false)
         case actionTypes.HEADER_NAVTOWCLICK:
             return state.set('navlist',fromJS(action.jsnavlist))
         default:

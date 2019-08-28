@@ -11,6 +11,7 @@ class Jdcase extends PureComponent {
         const {
             navlistcopy,
             jslist,
+            setlocoltion
         } = this.props;
 
         
@@ -23,7 +24,7 @@ class Jdcase extends PureComponent {
                         {
                             navlistcopy && navlistcopy.map((item, index) => (
                                 <li key={index}>
-                                    <Link to={"/"+item.get('link')}>
+                                    <Link onClick={() => setlocoltion(index) } to={item.get('link')}>
                                           { item.get('title') }
                                     </Link>
                                 </li>
@@ -51,7 +52,7 @@ class Jdcase extends PureComponent {
                                     <Col key={item.get('id')} xs={towindexclass } sm={towindexclass} md={telindexclass} lg={telindexclass} xl={telindexclass} className={
                                         className_jd
                                     }>
-                                        <Link to="/">
+                                        <Link to={'/Details/'+item.get('id')}>
                                             <img src={item.get('image')} alt="" className="imgresclass" />
                                             <p>
                                                 <span className="floatLeft">{item.get('title')}</span>
@@ -84,6 +85,58 @@ const mapDispathToProps = (dispatch) => {
     return {
         getjdcase() {
             dispatch(actionsCreators.getjdcaseCreators())
+        },
+        setlocoltion(index){
+            function setlocalfunc(style,index){
+                let getdataArr = {
+                    offset: 1,
+                    limit: 16,
+                    style:style,
+                    type: "",
+                    begPrice: "",
+                    endPrice: ""
+            }
+            sessionStorage.setItem("dataArr", JSON.stringify(getdataArr));
+            sessionStorage.setItem("styleindex", index+1);
+            sessionStorage.removeItem('typeindex')
+            sessionStorage.removeItem('budgetindex')
+            
+            }
+
+            switch(index){
+                case 0:
+                        setlocalfunc('现代简约',index);
+                        
+                        break;
+                case 1:
+                        setlocalfunc('中式',index)
+                        break;
+                case 2:
+                        setlocalfunc('欧式',index)
+                        break;
+
+                case 3:
+                        setlocalfunc('北欧',index)
+                        break;
+
+                case 4:
+                        setlocalfunc('田园',index)
+                        break;
+
+                case 5:
+                        setlocalfunc('混搭',index)
+                        break;
+
+                case 6:
+                        setlocalfunc('新古典',index)
+                        break;
+
+                case 7:
+                        setlocalfunc('其他',index)
+                        break;
+                default:
+                    break;
+            }
         }
     }
 }
