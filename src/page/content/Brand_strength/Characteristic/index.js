@@ -82,6 +82,8 @@ class Characteristic extends PureComponent {
             thiss.setState({
                 listdata: arr
             })
+        }).catch((error) =>{
+            console.log(error)
         })
     }
 }

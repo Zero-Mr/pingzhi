@@ -136,7 +136,7 @@ class Details extends PureComponent {
             thiss.setState({
                 data
             })
-
+            document.title = this.state.data.title;
             let dombox = document.getElementById('bignav');
             function addsad(dom){
               let top = dom.offsetTop;

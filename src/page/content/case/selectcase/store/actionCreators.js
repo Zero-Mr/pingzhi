@@ -77,6 +77,8 @@ function selectopcitonfunc(style,begPrice,endPrice,type,dispatch){
                 endPrice
             }
             sessionStorage.setItem("dataArr",JSON.stringify(getdataArr));
+    }).catch((error)=>{
+        console.log(error)
     })
 }
 

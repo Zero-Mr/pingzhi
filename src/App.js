@@ -25,11 +25,6 @@ function App() {
             <ContentWrap />
             <FooterWrap />
           </Layout>
-
-          {/* <Route path={["/", "/index.html"]} exact component={Home} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/detail/:id" exact component={Detail} />
-            <Route path="/write" exact component={Write} /> */}
         </BrowserRouter>
       </div>
     </Provider>

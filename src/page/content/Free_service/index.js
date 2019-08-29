@@ -181,13 +181,17 @@ class FreeServer extends PureComponent {
         window.scrollTo(0,dom)
     }
     componentDidMount(){
+        document.title= "免费服务"
         let thiss= this;
         axios.get(apiList.data[6].alltelnum).then((res)=>{
             let num = res.data
             thiss.setState({
                 allter:num
             })
+        }).catch((error)=>{
+            console.log(error)
         })
+        
     }
 }
 

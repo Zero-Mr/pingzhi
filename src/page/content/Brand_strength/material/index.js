@@ -69,6 +69,8 @@ class Mterial extends PureComponent {
             thiss.setState({
                 splicdata:res.data.data
             })
+        }).catch((error) =>{
+            console.log(error)
         })
     }
 }

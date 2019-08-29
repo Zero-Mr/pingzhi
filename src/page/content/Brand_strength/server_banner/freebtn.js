@@ -54,6 +54,8 @@ const mapDispathToProps = (dispatch) => {
                         alert(res.data.msg+'，我们的工作人员将尽快和您取得联系')
                         dispatch(actionsCreators.resultuserdataCreators())
                     }
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }
         },

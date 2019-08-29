@@ -254,6 +254,8 @@ class Ticker extends PureComponent {
           banb:res.data.data.halt_price,
         })
         thiss.props.successteladd()
+      }).catch((error)=>{
+        console.log(error)
       })
     }
 

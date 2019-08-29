@@ -13,6 +13,9 @@ class Case extends PureComponent {
             </div>
         )
     }
+    componentDidMount(){
+        document.title= "装修案例"
+    }
 
 }
 

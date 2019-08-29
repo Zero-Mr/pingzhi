@@ -16,5 +16,7 @@ export const knowledgeCreators = () => (dispatch) => {
     }).then((res)=>{
         let data = res.data;
         dispatch(knowledgeAction(data))
+    }).catch((error)=>{
+        console.log(error)
     })
 }

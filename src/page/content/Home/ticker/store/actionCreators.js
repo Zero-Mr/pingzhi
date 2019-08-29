@@ -15,6 +15,8 @@ export const getalltelnumCreators = (value) => (dispatch) => {
       axios.get(apiList.data[6].alltelnum).then((res)=>{
         value=res.data;
         dispatch(getalltelAction(value))
+      }).catch((error)=>{
+          console.log(error)
       })
 }
 

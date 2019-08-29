@@ -50,6 +50,8 @@ const mapState = (state) => {
             axios.get(apiList.data[6].alltelnum).then((res)=>{
                 let num = res.data
                 dispatch(actionsCreators.getallnumCreators(num))
+            }).catch((error)=>{
+                console.log(error)
             })
         }
     }

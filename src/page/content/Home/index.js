@@ -19,6 +19,9 @@ class Home extends PureComponent {
            </div>
         )
     }
+    componentDidMount(){
+        document.title = '品智装饰'
+    }
 }
 
 export default Home

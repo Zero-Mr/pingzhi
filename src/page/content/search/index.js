@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiList from '@src/apiData.json'
 import { Breadcrumb, Pagination, Card,Row,Col } from 'antd';
-const { Meta } = Card;
 class Search extends PureComponent {
 
 
@@ -90,6 +89,9 @@ class Search extends PureComponent {
                 text,
                 pagetotal
             })
+        document.title= this.state.text+"的搜索结果"
+        }).catch((error)=>{
+            console.log(error)
         })
     }
 
@@ -114,6 +116,8 @@ class Search extends PureComponent {
                 pagetotal,
                 current:page
             })
+        }).catch((error)=>{
+            console.log(error)
         })
     }
 }

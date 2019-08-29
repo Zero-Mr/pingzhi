@@ -173,6 +173,7 @@ class Process extends PureComponent {
     }
 
     componentDidMount() {
+        document.title= "装修知识"
         setstatusfunc(this)
         window.scrollTo(0, -30)
     }
@@ -294,6 +295,8 @@ const mapDispathToProps = (dispatch) => {
                     let total = res.data.total/6*10;
                     dispatch(actionsCreators.setArrDataCreators(axiosarr,total))
                     sessionStorage.setItem('typesof', 'all');
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }else if(boxs != ''){
                 axios.get(apiList.data[4].knowledge, {
@@ -308,6 +311,8 @@ const mapDispathToProps = (dispatch) => {
                     let total = res.data.total/6*10;
                     dispatch(actionsCreators.setArrDataCreators(axiosarr,total))
                     sessionStorage.setItem('typesof', boxs);
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }else{
                 axios.get(apiList.data[4].knowledge, {
@@ -322,6 +327,8 @@ const mapDispathToProps = (dispatch) => {
                     let total = res.data.total/6*10;
                     dispatch(actionsCreators.setArrDataCreators(axiosarr,total))
                     sessionStorage.setItem('typesof', 'fengshui');
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }
         },
@@ -339,6 +346,8 @@ const mapDispathToProps = (dispatch) => {
                 }).then((res) => {
                     let axiosarr = res.data.list;
                     dispatch(actionsCreators.ChangepageDataCreators(axiosarr,page))
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }else if( typesof == 'fengshui' ){
                 axios.get(apiList.data[4].knowledge, {
@@ -351,6 +360,8 @@ const mapDispathToProps = (dispatch) => {
                 }).then((res) => {
                     let axiosarr = res.data.list;
                     dispatch(actionsCreators.ChangepageDataCreators(axiosarr,page))
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }else{
                 axios.get(apiList.data[4].knowledge, {
@@ -363,6 +374,8 @@ const mapDispathToProps = (dispatch) => {
                 }).then((res) => {
                     let axiosarr = res.data.list;
                     dispatch(actionsCreators.ChangepageDataCreators(axiosarr,page))
+                }).catch((error)=>{
+                    console.log(error)
                 })
             }
             dispatch(actionsCreators.changepageCreators(page))

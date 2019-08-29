@@ -29,6 +29,9 @@ class Brand_strength extends PureComponent {
            </div>
         )
     }
+    componentDidMount(){
+        document.title = '品牌实力'
+    }
 }
 
 export default Brand_strength

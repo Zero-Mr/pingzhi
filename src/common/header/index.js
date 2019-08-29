@@ -114,7 +114,11 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
     return {
         searchclick(value){
-            window.location.href ='/search/'+value
+            if(value == ''){
+                alert('内容不能为空')
+            }else{
+              window.location.href ='/search/'+value
+            }
         },
         getNavList() {
             dispatch(actionsCreators.getNavListCreators())
@@ -153,7 +157,7 @@ const mapDispathToProps = (dispatch) => {
                         endPrice: ""
                     }
                     sessionStorage.setItem("dataArr", JSON.stringify(getdataArr));
-                    let allnum = res.data.total / 16 * 10;
+                    let allnum = Math.ceil(res.data.total / 16 * 10);
                     let itemlist = res.data.list;
                     dispatch(CaseactionsCreators.opengetdataCreators(allnum, itemlist))
 

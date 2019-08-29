@@ -342,7 +342,7 @@ class Question extends PureComponent {
     }
 
     componentDidMount(){
-        
+        document.title= "装修知识"
         let thiss = this;
         axios.get(apilist.data[4].knowledge,{
             params:{
@@ -355,6 +355,8 @@ class Question extends PureComponent {
                 questions:data[1],
                 renovation:data[2]
             })
+        }).catch((error)=>{
+            console.log(error)
         })
     
     }

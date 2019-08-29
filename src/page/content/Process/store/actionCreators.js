@@ -55,6 +55,8 @@ function axiosfunc(categorystr, dispatch, urlIDstr,arr1,arr2,arr3,arr4) {
         let allnum = res.data.total / 6 * 10;
         let urlID = urlIDstr;
         dispatch(NavClickOneAction(axiosarr, allnum, urlID,arr1,arr2,arr3,arr4))
+    }).catch((error)=>{
+        console.log(error)
     })
 }
 
@@ -94,6 +96,8 @@ export const Navtypesof = (index,arr1,arr2,arr3,arr4) => (dispatch) => {
                 let allnum = res.data.total / 6 * 10;
                 let urlID = '00';
                 dispatch(NavClickOneAction(axiosarr, allnum, urlID,arr1,arr2,arr3,arr4))
+            }).catch((error)=>{
+                console.log(error)
             })
             break;
         case 2:

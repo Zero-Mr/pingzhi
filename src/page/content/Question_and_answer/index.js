@@ -146,7 +146,10 @@ class Questionandanswer extends PureComponent {
                 data:res.data,
                 next:res.data.next,
                 prev:res.data.previous
-            })      
+            })    
+            document.title = this.state.data.current.title;
+        }).catch((error)=>{
+            console.log(error)
         })
         window.scrollTo(0, -30)
     }
@@ -162,7 +165,10 @@ class Questionandanswer extends PureComponent {
                 data:res.data,
                 next:res.data.next,
                 prev:res.data.previous
-            })      
+            })   
+            document.title = this.state.data.current.title;
+        }).catch((error)=>{
+            console.log(error)
         })
         window.scrollTo(0, -30)
     }

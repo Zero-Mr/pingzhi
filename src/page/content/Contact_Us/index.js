@@ -85,6 +85,9 @@ class ContactUs extends PureComponent {
             isshow:!this.state.isshow
         })
     }
+    componentDidMount(){
+        document.title= "联系我们"
+    }
 }
 
 export default ContactUs
