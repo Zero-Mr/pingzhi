@@ -100,7 +100,6 @@ class Questionandanswer extends PureComponent {
                                     </Link>
                                 </span>
                                 <span  className="next-andlastclick">
-                                    
                                     { next && next.title ? <Link onClick={ () => this.nextAndprevClick(next.id) } to={'/Question-and-answer/' + next.id }>{ next && next.title ? " 下一篇：" : "" } { next && next.title }</Link> : "下一篇：没有了" }
                                 </span>
 
